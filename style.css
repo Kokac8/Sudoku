@@ -38,9 +38,7 @@ body {
     border-bottom: none; /* Remove double border at the section corners */
 }
 
-#sudoku-grid tr td:nth-child(3n) {
-    border-right: none; /* Remove double border at the section corners */
-}
+
 
 /* Center the button */
 button {
