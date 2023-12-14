@@ -35,3 +35,25 @@ function populateSudokuGrid(puzzle) {
 // Call the function to populate the grid with the sample puzzle
 populateSudokuGrid(samplePuzzle);
 
+// Function to check if a number can be placed in a cell
+function isNumberValid(number, row, col, puzzle) {
+  // Check the row and column
+  for (let i = 0; i < 9; i++) {
+    if (puzzle[row][i] === number || puzzle[i][col] === number) {
+      return false;
+    }
+  }
+
+  // Check the 3x3 subgrid
+  const startRow = row - row % 3;
+  const startCol = col - col % 3;
+  for (let r = startRow; r < startRow + 3; r++) {
+    for (let c = startCol; c < startCol + 3; c++) {
+      if (puzzle[r][c] === number) {
+        return false;
+      }
+    }
+  }
+  
+  return true; // Number can be placed
+}
