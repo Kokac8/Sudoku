@@ -24,6 +24,7 @@ function populateSudokuGrid(puzzle) {
       const cell = document.getElementById(`cell-${row}-${col}`);
       if (puzzle[row][col] !== 0) {
         cell.textContent = puzzle[row][col];
+        cell.contentEditable = false;
       } else {
         cell.textContent = '';
         cell.contentEditable = true; // Make the cell editable
@@ -31,9 +32,6 @@ function populateSudokuGrid(puzzle) {
     }
   }
 }
-
-// Call the function to populate the grid with the sample puzzle
-populateSudokuGrid(samplePuzzle);
 
 // Function to check if a number can be placed in a cell
 function isNumberValid(number, row, col, puzzle) {
@@ -45,8 +43,8 @@ function isNumberValid(number, row, col, puzzle) {
   }
 
   // Check the 3x3 subgrid
-  const startRow = row - row % 3;
-  const startCol = col - col % 3;
+  const startRow = Math.floor(row / 3) * 3;
+  const startCol = Math.floor(col / 3) * 3;
   for (let r = startRow; r < startRow + 3; r++) {
     for (let c = startCol; c < startCol + 3; c++) {
       if (puzzle[r][c] === number) {
@@ -54,6 +52,49 @@ function isNumberValid(number, row, col, puzzle) {
       }
     }
   }
-  
+
   return true; // Number can be placed
 }
+
+// Function to update the puzzle array when a user inputs a number
+function updatePuzzleWithInput(row, col, value) {
+  // Check if the entered value is between 1 and 9
+  if (value >= 1 && value <= 9) {
+    // Check if the number is valid in the current puzzle state
+    if (isNumberValid(value, row, col, samplePuzzle)) {
+      samplePuzzle[row][col] = value; // Update the puzzle array
+      return true;
+    }
+  }
+  return false;
+}
+
+// Function to add event listeners to all editable cells
+function addEventListenersToCells() {
+  for (let row = 0; row < 9; row++) {
+    for (let col = 0; col < 9; col++) {
+      const cell = document.getElementById(`cell-${row}-${col}`);
+      if (cell.isContentEditable) {
+        // Add an event listener for the 'input' event
+        cell.addEventListener('input', function(event) {
+          // Get the entered value and try to update the puzzle
+          const input = event.target.innerText;
+          if (updatePuzzleWithInput(row, col, parseInt(input, 10))) {
+            // If the number is valid, remove any 'invalid' styling
+            event.target.classList.remove('invalid');
+          } else {
+            // If the number is not valid, add 'invalid' styling and clear the input
+            event.target.classList.add('invalid');
+            setTimeout(() => { event.target.innerText = ''; }, 500); // Clear the invalid input after a short delay
+          }
+        });
+      }
+    }
+  }
+}
+
+// Initially populate the grid with the sample puzzle
+populateSudokuGrid(samplePuzzle);
+// Add event listeners to the cells
+addEventListenersToCells();
+
