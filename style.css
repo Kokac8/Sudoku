@@ -10,6 +10,27 @@ body {
     padding: 20px;
 }
 
-#sudoku-grid {
-    /* Add styles for your Sudoku grid here */
+#sudoku-grid table {
+    margin: auto;
+    border-collapse: collapse;
 }
+
+#sudoku-grid td {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Thick border for 3x3 sections */
+#sudoku-grid tr:nth-child(3n) td,
+#sudoku-grid tr:nth-child(3n + 1) td {
+    border-bottom: 3px solid black;
+}
+
+#sudoku-grid td:nth-child(3n),
+#sudoku-grid td:nth-child(3n + 1) {
+    border-right: 3px solid black;
+}
+
