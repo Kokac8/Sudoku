@@ -8,20 +8,7 @@
     <div id="main-container">
         <h1>Daily Sudoku</h1>
         <div id="sudoku-grid">
-            <table>
-    <tbody>
-        <!-- Generate 9 rows -->
-        <% for (let row = 0; row < 9; row++) { %>
-            <tr>
-                <!-- Generate 9 cells in each row -->
-                <% for (let col = 0; col < 9; col++) { %>
-                    <td id="cell-<%= row %>-<%= col %>"></td>
-                <% } %>
-            </tr>
-        <% } %>
-    </tbody>
-</table>
-
+            <!-- Sudoku grid will be generated here -->
         </div>
         <button onclick="generateSudoku()">New Puzzle</button>
     </div>
