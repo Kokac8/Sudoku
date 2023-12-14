@@ -18,7 +18,18 @@ let redoStack = [];
 
 // Function to populate the grid with a Sudoku puzzle
 function populateSudokuGrid(puzzle) {
-  // ... (populate function remains unchanged)
+  for (let row = 0; row < 9; row++) {
+    for (let col = 0; col < 9; col++) {
+      const cell = document.getElementById(`cell-${row}-${col}`);
+      if (puzzle[row][col] !== 0) {
+        cell.textContent = puzzle[row][col];
+        cell.contentEditable = false;
+      } else {
+        cell.textContent = '';
+        cell.contentEditable = true; // Make the cell editable
+      }
+    }
+  }
 }
 
 // Function to check if a number can be placed in a cell
