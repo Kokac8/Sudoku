@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+#main-container {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+}
+
+#sudoku-grid {
+    /* Add styles for your Sudoku grid here */
+}
