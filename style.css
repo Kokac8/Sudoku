@@ -24,8 +24,8 @@ body {
 }
 
 /* Thick border for 3x3 sections */
-#sudoku-grid tr:nth-child(3n) td,
-#sudoku-grid tr:nth-child(3n + 1) td {
+#sudoku-grid tr:nth-child(2n) td,
+#sudoku-grid tr:nth-child(2n + 1) td {
     border-bottom: 3px solid black;
 }
 
