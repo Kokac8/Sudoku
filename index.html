@@ -8,7 +8,36 @@
     <div id="main-container">
         <h1>Daily Sudoku</h1>
         <div id="sudoku-grid">
-            <!-- Sudoku grid will be generated here -->
+            <table>
+                <tbody>
+                    <!-- Each tr is a row, and each td is a cell in that row -->
+                    <tr>
+                        <td id="cell-0-0"></td>
+                        <td id="cell-0-1"></td>
+                        <td id="cell-0-2"></td>
+                        <td id="cell-0-3"></td>
+                        <td id="cell-0-4"></td>
+                        <td id="cell-0-5"></td>
+                        <td id="cell-0-6"></td>
+                        <td id="cell-0-7"></td>
+                        <td id="cell-0-8"></td>
+                    </tr>
+                    <!-- Repeat for each row -->
+                    <!-- Rows 1 to 8 -->
+                    <tr>
+                        <td id="cell-1-0"></td>
+                        <td id="cell-1-1"></td>
+                        <td id="cell-1-2"></td>
+                        <td id="cell-1-3"></td>
+                        <td id="cell-1-4"></td>
+                        <td id="cell-1-5"></td>
+                        <td id="cell-1-6"></td>
+                        <td id="cell-1-7"></td>
+                        <td id="cell-1-8"></td>
+                    </tr>
+                    <!-- Repeat tr block for remaining rows -->
+                </tbody>
+            </table>
         </div>
         <button onclick="generateSudoku()">New Puzzle</button>
     </div>
